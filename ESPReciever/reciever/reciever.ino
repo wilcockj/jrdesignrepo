@@ -35,8 +35,6 @@ const char* PARAM_MESSAGE = "message";
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
-AsyncWebSocket ws("/ws"); // access at ws://[esp ip]/ws
-AsyncEventSource events("/events"); // event source (Server-Sent events)
 
 void onRequest(AsyncWebServerRequest *request){
   //Handle Unknown Request
@@ -77,11 +75,8 @@ void setup(){
     return;
   }*/
   // attach AsyncWebSocket
-  ws.onEvent(onEvent);
-  server.addHandler(&ws);
 
   // attach AsyncEventSource
-  server.addHandler(&events);
   IPAddress IP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
   Serial.println(IP);
@@ -157,7 +152,6 @@ void setup(){
       Serial.println();
       Serial.println(message);
       DeserializationError error = deserializeJson(doc, message);
-      JsonObject obj = doc.as<JsonObject>();
 
       // Test if parsing succeeds.
       if (error) {
@@ -165,6 +159,7 @@ void setup(){
         Serial.println(error.f_str());
         return;
       }
+      
       const char* color = doc["color"];
       Serial.printf("color = %s",color);
       request->send(200);
