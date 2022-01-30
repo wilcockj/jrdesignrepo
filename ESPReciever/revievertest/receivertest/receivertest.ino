@@ -67,9 +67,12 @@ void setup(){
   Serial.println("Setting up");
   Wire.begin();
   Wire.setClock(400000);//I2C 400kHz
+  if (MP.begin() == false)
+  {
+    Serial.println("COULD NOT CONNECT");
+  }
   for (int i = 0; i < 8; i++) {
       Serial.printf("Initializing board %d\n",i);
-      MP.enableChannel(i);
       MP.selectChannel(i);
       WriteLedDriverByte(0x17,0x00);//reset
       WriteLedDriverByte(0x00,0x01);//enable
