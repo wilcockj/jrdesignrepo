@@ -4,6 +4,7 @@
 
 //#include<pgmspace.h>
 #define MUX_Address 0x70//0x70
+TCA9548 MP(0x70);
 
 // Initialize I2C buses using TCA9548A I2C Multiplexer
 void tcaselect(uint8_t i2c_bus) {
@@ -68,8 +69,8 @@ void setup(){
   Wire.setClock(400000);//I2C 400kHz
   for (int i = 0; i < 8; i++) {
       Serial.printf("Initializing board %d\n",i);
-      enableChannel(i);
-      selectChannel(i);
+      MP.enableChannel(i);
+      MP.selectChannel(i);
       WriteLedDriverByte(0x17,0x00);//reset
       WriteLedDriverByte(0x00,0x01);//enable
       WriteLedDriverByte(0x13,0x3f);//enable leds
@@ -83,7 +84,7 @@ void setup(){
 void loop(){
   for (int i = 0; i < 8; i++) {
       Serial.printf("Selecting mux %d\n",i);
-      tcaselect(i);
+      MP.selectChannel(i);
       Serial.printf("Setting leds on for board %d\n",i);
       setledon();
       delay(500);
