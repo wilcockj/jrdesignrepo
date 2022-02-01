@@ -63,6 +63,21 @@ void setledon()
   //delay(50);
 }
 
+void onoffled(){
+  for(int pwmreg = 1; pwmreg <= 0x12; pwmreg++){
+      WriteLedDriverByte(pwmreg,255);  
+  }
+  //delay(5);
+  WriteLedDriverByte(0x16,00);
+  //delay(50);
+  delay(500);
+  for(int pwmreg = 1; pwmreg <= 0x12; pwmreg++){
+    WriteLedDriverByte(pwmreg,0x0); // pwm off
+  }
+  //delay(5);
+  WriteLedDriverByte(0x16,00);
+}
+
 void setup()
 {
   Serial.begin(115200);
@@ -99,7 +114,7 @@ void loop(){
       //Serial.printf("Selecting mux %d\n",i);
       myMux.setPort(i);
       //Serial.printf("Setting leds on for board %d\n",i);
-      setledon();
+      onoffled();
       delay(5);
     }
     //delay(500);
