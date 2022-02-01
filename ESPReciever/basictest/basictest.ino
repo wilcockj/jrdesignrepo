@@ -33,12 +33,12 @@ QWIICMUX myMux;
 
 void WriteLedDriverByte(uint8_t Reg_Add,uint8_t Reg_Dat){
    //Serial.print("Writing %d",Reg_Dat);
-  Serial.print("Writing ");
-  Serial.print(Reg_Dat,HEX);
+  //Serial.print("Writing ");
+  //Serial.print(Reg_Dat,HEX);
   //Serial.print("to address %d\n",Reg_Add);
-  Serial.print(" to address ");
-  Serial.print(Reg_Add,HEX);
-  Serial.println();
+  //Serial.print(" to address ");
+  //Serial.print(Reg_Add,HEX);
+  //Serial.println();
   Wire.beginTransmission(0xA8/2);//(MUX_Address/2);
   Wire.write(Reg_Add); // sends regaddress
   Wire.write(Reg_Dat); // sends regaddress
@@ -47,20 +47,20 @@ void WriteLedDriverByte(uint8_t Reg_Add,uint8_t Reg_Dat){
 
 void setledon()
 {
-  int randnum = random(125);
+  int randnum = random(2);
   for(int pwmreg = 1; pwmreg <= 0x12; pwmreg++){
-      randnum = random(125);
+      randnum = random(2) * 255;
       WriteLedDriverByte(pwmreg,randnum);  
   }
-  delay(5);
+  //delay(5);
   WriteLedDriverByte(0x16,00);
-  delay(50);
+  //delay(50);
   for(int pwmreg = 1; pwmreg <= 0x12; pwmreg++){
     WriteLedDriverByte(pwmreg,0x0); // pwm off
   }
-  delay(5);
+  //delay(5);
   WriteLedDriverByte(0x16,00);
-  delay(50);
+  //delay(50);
 }
 
 void setup()
@@ -70,7 +70,7 @@ void setup()
   Serial.println("Qwiic Mux Shield Read Example");
 
   Wire.begin();
-  Wire.setClock(100000);
+  Wire.setClock(400000);
   if (myMux.begin() == false)
   {
     Serial.println("Mux not detected. Freezing...");
@@ -95,12 +95,12 @@ void setup()
 }
 
 void loop(){
-  for (int i = 0; i < 8; i++) {
-      Serial.printf("Selecting mux %d\n",i);
+  for (int i = 0; i < 2; i++) {
+      //Serial.printf("Selecting mux %d\n",i);
       myMux.setPort(i);
-      Serial.printf("Setting leds on for board %d\n",i);
+      //Serial.printf("Setting leds on for board %d\n",i);
       setledon();
-      delay(500);
+      delay(5);
     }
     //delay(500);
 }
