@@ -66,7 +66,7 @@ void setup(){
   Serial.println();
   Serial.println("Setting up");
   Wire.begin();
-  Wire.setClock(400000);//I2C 400kHz
+  Wire.setClock(100000);//I2C 400kHz
   
   if (MP.begin() == false)
   {
