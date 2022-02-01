@@ -1,3 +1,4 @@
+
 /*
   Use the Qwiic Mux to access multiple I2C devices on seperate busses.
   By: Nathan Seidle @ SparkFun Electronics
@@ -26,6 +27,7 @@
 */
 
 #include <Wire.h>
+
 
 #include <SparkFun_I2C_Mux_Arduino_Library.h> //Click here to get the library: http://librarymanager/All#SparkFun_I2C_Mux
 QWIICMUX myMux;
