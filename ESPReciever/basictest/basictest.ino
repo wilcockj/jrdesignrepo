@@ -16,11 +16,12 @@ void setup(){
   Serial.println();
   Serial.println("Setting up");
   Wire.begin();
-  Wire.setClock(400000);//I2C 400kHz
+  Wire.setClock(100000);//I2C 400kHz
   
   TCA9548A(0);
   
 }
 
 void loop(){
+   TCA9548A(0);
 }
