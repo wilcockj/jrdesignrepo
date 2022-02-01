@@ -1,18 +1,11 @@
-#include <TCA9548.h>
-#include <Arduino.h>
+//#include <TCA9548.h>
+//#include <Arduino.h>
 #include<Wire.h>
 
+#include <SparkFun_I2C_Mux_Arduino_Library.h> //Click here to get the library: http://librarymanager/All#SparkFun_I2C_Mux
+QWIICMUX myMux;
 //#include<pgmspace.h>
-#define MUX_Address 0x70//0x70
-TCA9548 MP(0x70);
-
-// Initialize I2C buses using TCA9548A I2C Multiplexer
-void tcaselect(uint8_t i2c_bus) {
-    if (i2c_bus > 7) return;
-    Wire.beginTransmission(MUX_Address);
-    Wire.write(1 << i2c_bus);
-    Wire.endTransmission(); 
-}
+//#define MUX_Address 0x70//0x70
 
 void WriteByte(uint8_t Dev_Add,uint8_t Reg_Add,uint8_t Reg_Dat)
 {
@@ -66,16 +59,22 @@ void setup(){
   Serial.println();
   Serial.println("Setting up");
   Wire.begin();
-  Wire.setClock(100000);//I2C 400kHz
-  
-  if (MP.begin() == false)
+
+  if (myMux.begin() == false)
   {
-    Serial.println("COULD NOT CONNECT");
+    Serial.println("Mux not detected. Freezing...");
+    while (1)
+      ;
   }
+  Serial.println("Mux detected");
   
+  byte currentPortNumber = 0;
   for (int i = 0; i < 8; i++) {
       Serial.printf("Initializing board %d\n",i);
-      MP.selectChannel(i);
+      myMux.setPort(i);
+      byte currentPortNumber = myMux.getPort();
+      Serial.print("CurrentPort: ");
+      Serial.println(currentPortNumber);
       WriteLedDriverByte(0x17,0x00);//reset
       WriteLedDriverByte(0x00,0x01);//enable
       WriteLedDriverByte(0x13,0x3f);//enable leds
@@ -89,7 +88,7 @@ void setup(){
 void loop(){
   for (int i = 0; i < 8; i++) {
       Serial.printf("Selecting mux %d\n",i);
-      MP.selectChannel(i);
+      myMux.setPort(i);
       Serial.printf("Setting leds on for board %d\n",i);
       setledon();
       delay(500);

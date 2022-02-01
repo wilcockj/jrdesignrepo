@@ -1,47 +1,93 @@
-/**
- * TCA9548 I2CScanner.ino -- I2C bus scanner for Arduino
- *
- * Based on https://playground.arduino.cc/Main/I2cScanner/
- *
- */
+/*
+  Use the Qwiic Mux to access multiple I2C devices on seperate busses.
+  By: Nathan Seidle @ SparkFun Electronics
+  Date: May 17th, 2020
+  License: This code is public domain but you buy me a beer if you use this
+  and we meet someday (Beerware license).
 
-#include "Wire.h"
+  Some I2C devices respond to only one I2C address. This can be a problem
+  when you want to hook multiple of a device to the I2C bus. An I2C Mux
+  solves this issue by allowing you to change the 'channel' or port that
+  the master is talking to.
 
-#define TCAADDR 0x70
+  This example shows how to connect to different ports.
+  The TCA9548A is a mux. This means when you enableMuxPort(2) then the SDA and SCL lines of the master (Arduino)
+  are connected to port 2. Whatever I2C traffic you do, such as distanceSensor.startRanging() will be communicated to whatever
+  sensor you have on port 2.
 
-void tcaselect(uint8_t i) {
-  if (i > 7) return;
- 
-  Wire.beginTransmission(TCAADDR);
-  Wire.write(1 << i);
-  Wire.endTransmission();  
-}
+  Hardware Connections:
+  Attach the Qwiic Mux Shield to your RedBoard or Uno.
+  Plug a device into port 0 or 1
+  Serial.print it out at 115200 baud to serial monitor.
 
+  SparkFun labored with love to create this code. Feel like supporting open
+  source? Buy a board from SparkFun!
+  https://www.sparkfun.com/products/14685
+*/
 
-// standard Arduino setup()
+#include <Wire.h>
+
+#include <SparkFun_I2C_Mux_Arduino_Library.h> //Click here to get the library: http://librarymanager/All#SparkFun_I2C_Mux
+QWIICMUX myMux;
+
 void setup()
 {
-    Wire.begin();
-    
-    Serial.begin(115200);
-    Serial.println("\nTCAScanner ready!");
-    
-    for (uint8_t t=0; t<8; t++) {
-      tcaselect(t);
-      Serial.print("TCA Port #"); Serial.println(t);
+  Serial.begin(115200);
+  Serial.println();
+  Serial.println("Qwiic Mux Shield Read Example");
 
-      for (uint8_t addr = 0; addr<=127; addr++) {
-        if (addr == TCAADDR) continue;
+  Wire.begin();
 
-        Wire.beginTransmission(addr);
-        if (!Wire.endTransmission()) {
-          Serial.print("Found I2C 0x");  Serial.println(addr,HEX);
-        }
-      }
-    }
-    Serial.println("\ndone");
+  if (myMux.begin() == false)
+  {
+    Serial.println("Mux not detected. Freezing...");
+    while (1)
+      ;
+  }
+  Serial.println("Mux detected");
+
+  myMux.setPort(1); //Connect master to port labeled '1' on the mux
+
+  byte currentPortNumber = myMux.getPort();
+  Serial.print("CurrentPort: ");
+  Serial.println(currentPortNumber);
+
+  Serial.println("Begin scanning for I2C devices");
 }
 
-void loop() 
+void loop()
 {
+  Serial.println();
+
+  byte nDevices = 0;
+  for (byte address = 1; address < 127; address++)
+  {
+    Wire.beginTransmission(address);
+    byte error = Wire.endTransmission();
+
+    if (error == 0)
+    {
+      Serial.print("I2C device found at address 0x");
+      if (address < 0x10)
+        Serial.print("0");
+      Serial.print(address, HEX);
+      Serial.println();
+
+      nDevices++;
+    }
+    else if (error == 4)
+    {
+      Serial.print("Unknown error at address 0x");
+      if (address < 0x10)
+        Serial.print("0");
+      Serial.println(address, HEX);
+    }
+  }
+
+  if (nDevices == 0)
+    Serial.println("No I2C devices found");
+  else
+    Serial.println("Done");
+
+  delay(1000);
 }

@@ -100,7 +100,7 @@ void loop(){
       myMux.setPort(i);
       Serial.printf("Setting leds on for board %d\n",i);
       setledon();
-      delay(100);
+      delay(500);
     }
     //delay(500);
 }
