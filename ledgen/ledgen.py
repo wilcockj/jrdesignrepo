@@ -2,7 +2,6 @@ import bpy, bmesh
 import math
 import numpy as np
 from numpy.random import default_rng
-
 C = bpy.context
 D = bpy.data
 LED_RADIUS = 0.10  # radius of spheres
