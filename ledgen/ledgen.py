@@ -2,6 +2,16 @@ import bpy, bmesh
 import math
 import numpy as np
 from numpy.random import default_rng
+
+"""
+This program is a simulation of an led cube
+that will be used to visually show the algo
+rithms that will be present on the real cube
+This uses blenders python api to draw the cube 
+in 3d programatically and assign materials to each
+led for the ability to change the color and 
+keyframe them into animations
+"""
 C = bpy.context
 D = bpy.data
 LED_RADIUS = 0.10  # radius of spheres
