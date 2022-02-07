@@ -12,13 +12,15 @@ layout = [  [sg.Text('Animations')],
             [sg.In("", visible=False, enable_events=True, key='set_line_color'),
                 sg.ColorChooserButton('           ', target='set_line_color', key='set_line_color_chooser')],
             [sg.Text('Enter Messsage'), sg.InputText()],
-            [sg.Button('Send'), sg.Button("Toggle")]
+            [sg.Button('Send'), sg.Button("Toggle")],
+            [sg.Text('Audio Control')],
+            [sg.Button('Audio', button_color=('#ff5e00'), key='audio_color')]
             ]
 
 # Create the Window
 window = sg.Window('Lattice', layout)
 # Event Loop to process "events" and get the "values" of the inputs
-data = {'red': 0, 'green': 0, 'blue': 0, 'animation': 0, 'message':'none'};
+data = {'red': 0, 'green': 0, 'blue': 0, 'animation': 0, 'message':'none', 'choice': 0, 'audio': 0};
 
 while True:
     event, values = window.read()
@@ -42,6 +44,13 @@ while True:
        else:
            data['choice'] = 0
        r = requests.post(URL, json = data)
-       
+    if event == 'Audio':
+       if data['audio'] == 0:
+           data['audio'] = 1
+           window['audio_color'].Update(button_color=('#ff9933', '#ff9933'))
+       else:
+           data['audio'] = 0
+           window['audio_color'].Update(button_color=('#ff5e00', '#ff5e00'))
+
 
 window.close()
