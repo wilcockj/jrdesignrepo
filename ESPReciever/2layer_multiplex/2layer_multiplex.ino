@@ -6,6 +6,8 @@ QWIICMUX myMux;
 #define L_1 4
 #define FX_SPEED 50
 
+static int checker = 0;
+
 void WriteLedDriverByte(uint8_t Reg_Add,uint8_t Reg_Dat){
   Wire.beginTransmission(0xA8/2);//(MUX_Address/2);
   Wire.write(Reg_Add); // sends regaddress
@@ -16,9 +18,13 @@ void WriteLedDriverByte(uint8_t Reg_Add,uint8_t Reg_Dat){
 void setLayerOn(int chipNum) {
   if (chipNum == 0) {
     for(int pwmreg = 1; pwmreg <= 0x13; pwmreg++){
-        WriteLedDriverByte(pwmreg, 255);
-        if (pwmreg != 1){
-          WriteLedDriverByte(pwmreg-1, 0);
+        if(checker == 0){
+          checker = 1;
+          WriteLedDriverByte(pwmreg,255);
+        }
+        else{
+          checker = 0;
+          WriteLedDriverByte(pwmreg,0);
         }
         WriteLedDriverByte(0x16, 00);
         delay(FX_SPEED);
@@ -26,14 +32,36 @@ void setLayerOn(int chipNum) {
   } 
   else {
     for(int pwmreg = 1; pwmreg <= 0x8; pwmreg++){
-        WriteLedDriverByte(pwmreg, 255);
-        if (pwmreg != 1){
-          WriteLedDriverByte(pwmreg-1, 0);
+        if(checker == 0){
+          checker = 1;
+          WriteLedDriverByte(pwmreg,255);
+        }
+        else{
+          checker = 0;
+          WriteLedDriverByte(pwmreg,0);
         }
         WriteLedDriverByte(0x16, 00);
         delay(FX_SPEED);
     }
   }
+}
+
+void clearLayer(){
+    for(int pwmreg = 1; pwmreg <= 0x13; pwmreg++){
+        
+          WriteLedDriverByte(pwmreg,0);
+        WriteLedDriverByte(0x16, 00);
+        delay(FX_SPEED);
+    }
+ 
+    for(int pwmreg = 1; pwmreg <= 0x8; pwmreg++){
+
+          WriteLedDriverByte(pwmreg,0);
+
+        WriteLedDriverByte(0x16, 00);
+        delay(FX_SPEED);
+    }
+ 
 }
 
 void setup() {
@@ -85,6 +113,7 @@ void loop() {
         myMux.setPort(i);
         setLayerOn(i);
       } 
+      clearLayer();
     }
     else if (layer == 1) {
       digitalWrite(L_0, LOW);
@@ -93,6 +122,7 @@ void loop() {
         myMux.setPort(i);
         setLayerOn(i);
       } 
+      clearLayer();
     }
     //delay(100);
   }
