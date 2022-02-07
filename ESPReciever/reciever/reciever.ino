@@ -27,6 +27,11 @@ QWIICMUX myMux;
 
 #define L_0 15
 #define L_1 4
+#define L_2 18
+#define L_3 19
+#define L_4 21
+#define L_5 22
+#define L_6 23
 #define FX_SPEED 50
 static int checker = 0;
 byte PWM_Gamma64[64]=
@@ -253,6 +258,73 @@ void setup(){
   server.begin();
 }
 
+void selectLayer(int layernum){
+  switch(layernum){
+    case 0:
+        digitalWrite(L_0, HIGH);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 1:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, HIGH);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 2:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, HIGH);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 3:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, HIGH);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 4:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, HIGH);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 5:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, HIGH);
+        digitalWrite(L_6, LOW);
+        break;
+    case 6:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, HIGH);
+        break;
+  }
+}
 
 void setLayerOn(int chipNum) {
   if (chipNum == 0) {
