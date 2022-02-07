@@ -36,8 +36,10 @@ while True:
         data['blue'] = RGB[2]
     if event == 'Send':
         data['message'] = values[0]
-        r = requests.post(URL, json = data)
-        print(r)
+        try:
+          requests.post(URL, json = data, timeout = 3)
+        except:
+            sg.Popup("Not connected to Lattice", title = "Error")
     if event == 'Toggle':
        if data['choice'] == 0:
            data['choice'] = 1
@@ -47,10 +49,10 @@ while True:
     if event == 'Audio':
        if data['audio'] == 0:
            data['audio'] = 1
-           window['audio_color'].Update(button_color=('#ff9933', '#ff9933'))
+           window.find_element('audio_color').Update(button_color=('#ff9933'))
        else:
            data['audio'] = 0
-           window['audio_color'].Update(button_color=('#ff5e00', '#ff5e00'))
+           window.find_element('audio_color').Update(button_color=('#ff5e00'))
 
 
 window.close()
