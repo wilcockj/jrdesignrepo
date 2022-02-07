@@ -49,7 +49,7 @@ void setledon()
 {
   int randnum = random(2);
   for(int pwmreg = 1; pwmreg <= 0x12; pwmreg++){
-      randnum = random(2) * 255;
+      randnum = random(2) * 50;
       WriteLedDriverByte(pwmreg,randnum);  
   }
   //delay(5);
@@ -115,7 +115,7 @@ void loop(){
       myMux.setPort(i);
       //Serial.printf("Setting leds on for board %d\n",i);
       onoffled();
-      delay(5);
+      delay(50);
     }
     //delay(500);
 }

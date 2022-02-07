@@ -22,8 +22,18 @@
 #include <ArduinoJson.h>
 #include<Wire.h>
 #include<pgmspace.h>
-#define MUX_Address 0x70
+#include <SparkFun_I2C_Mux_Arduino_Library.h>
+QWIICMUX myMux;
 
+#define L_0 15
+#define L_1 4
+#define L_2 18
+#define L_3 19
+#define L_4 21
+#define L_5 22
+#define L_6 23
+#define FX_SPEED 50
+static int checker = 0;
 byte PWM_Gamma64[64]=
 {
 0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,
@@ -50,13 +60,6 @@ const char* PARAM_MESSAGE = "message";
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
 
-// Initialize I2C buses using TCA9548A I2C Multiplexer
-void tcaselect(uint8_t i2c_bus) {
-    if (i2c_bus > 7) return;
-    Wire.beginTransmission(MUX_Address);
-    Wire.write(1 << i2c_bus);
-    Wire.endTransmission(); 
-}
 
 
 void onRequest(AsyncWebServerRequest *request){
@@ -68,11 +71,6 @@ void onBody(AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t in
   //Handle body
 }
 
-
-String readTemp(){
-  return "98";
-}
-
 void onUpload(AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final){
   Serial.print("OH yeah");
 }
@@ -81,15 +79,66 @@ void onEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventTyp
   //Handle WebSocket event
 }
 
-void WriteByte(uint8_t Reg_Add,uint8_t Reg_Dat)
-{
-  Serial.printf("Writing %x to address: %x\n",Reg_Dat,Reg_Add);
-  Wire.beginTransmission(MUX_Address/2);
+void WriteLedDriverByte(uint8_t Reg_Add,uint8_t Reg_Dat){
+  Wire.beginTransmission(0xA8/2);//(MUX_Address/2);
   Wire.write(Reg_Add); // sends regaddress
   Wire.write(Reg_Dat); // sends regaddress
   Wire.endTransmission(); // stop transmitting
 }
 
+void clearLayer(){
+    for(int pwmreg = 1; pwmreg <= 0x13; pwmreg++){
+        
+          WriteLedDriverByte(pwmreg,0);
+        WriteLedDriverByte(0x16, 00);
+        delay(FX_SPEED);
+    }
+ 
+    for(int pwmreg = 1; pwmreg <= 0x8; pwmreg++){
+
+          WriteLedDriverByte(pwmreg,0);
+
+        WriteLedDriverByte(0x16, 00);
+        delay(FX_SPEED);
+    }
+ 
+}
+
+void setallon(){
+  for(int x = 0; x < 2; x++){
+    myMux.setPort(x);
+  for(int pwmreg = 1; pwmreg <= 0x13; pwmreg++){
+        
+          WriteLedDriverByte(pwmreg,255);
+        WriteLedDriverByte(0x16, 00);
+    }
+ 
+    for(int pwmreg = 1; pwmreg <= 0x8; pwmreg++){
+
+          WriteLedDriverByte(pwmreg,255);
+
+        WriteLedDriverByte(0x16, 00);
+    }
+  }
+}
+
+void setalloff(){
+  for(int x = 0; x < 2; x++){
+    myMux.setPort(x);
+    for(int pwmreg = 1; pwmreg <= 0x13; pwmreg++){
+          
+            WriteLedDriverByte(pwmreg,0);
+          WriteLedDriverByte(0x16, 00);
+      }
+   
+      for(int pwmreg = 1; pwmreg <= 0x8; pwmreg++){
+  
+            WriteLedDriverByte(pwmreg,0);
+  
+          WriteLedDriverByte(0x16, 00);
+      }
+  }
+}
 
 void setup(){
   Serial.begin(115200);
@@ -97,11 +146,33 @@ void setup(){
   Serial.println("Setting up");
   Wire.begin();
   Wire.setClock(400000);//I2C 400kHz
-  WriteByte(0x17,0x00);//reset
-  WriteByte(0x00,0x01);//enable
-  WriteByte(0x13,0x3f);//enable leds
-  WriteByte(0x14,0x3f);//enable leds 2
-  WriteByte(0x15,0x3f);//enable led 3
+  
+  pinMode(L_0, OUTPUT); //set both layers off
+  pinMode(L_1, OUTPUT);
+  digitalWrite(L_0, LOW);
+  digitalWrite(L_0, LOW);
+  
+  if (myMux.begin() == false)
+  {
+    Serial.println("Mux not detected. Freezing...");
+    while (1)
+      ;
+  }
+  Serial.println("Mux detected");
+
+  byte currentPortNumber = 0;
+  for (int i = 0; i < 8; i++) {
+      Serial.printf("Initializing board %d\n",i);
+      myMux.setPort(i);
+      currentPortNumber = myMux.getPort();
+      Serial.print("CurrentPort: ");
+      Serial.println(currentPortNumber);
+      WriteLedDriverByte(0x17,0x00);//reset
+      WriteLedDriverByte(0x00,0x01);//enable
+      WriteLedDriverByte(0x13,0x3f);//enable leds
+      WriteLedDriverByte(0x14,0x3f);//enable leds 2
+      WriteLedDriverByte(0x15,0x3f);//enable led 3
+  }
   // pinMode(4,OUTPUT);//SDB
   // digitalWrite(4,HIGH);//SDB_HIGH
   //delay(100); //keep 0.5s
@@ -125,60 +196,6 @@ void setup(){
   IPAddress IP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
   Serial.println(IP);
-
-  
-  server.on("/temperature", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", readTemp().c_str());
-  });
-  /*
-  server.on("/humidity", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", readHumi().c_str());
-  });
-  server.on("/pressure", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", readPres().c_str());
-  });*/
-  server.on("/upload", HTTP_POST, [](AsyncWebServerRequest *request){
-    Serial.println("uploaded\n");
-    String message;
-    
-    if (request->hasParam("data",true)) {
-            Serial.println("setting message");
-            message = request->getParam("data", true)->value();
-        } else {
-            message = "No message sent";
-        }
-    Serial.printf("here\n");
-    int args = request->args();
-    
-    for(int i=0;i<args;i++){
-      Serial.printf("ARG[%s]: %s\n", request->argName(i).c_str(), request->arg(i).c_str());
-      // message = request->arg(i).c_str();
-      /*
-      if (request->argName(i).c_str() == 'data')
-      {
-        //deserializeJson(doc,request->arg(i));
-        message = request->arg(i).c_str();
-      }*/
-    }
-    
-    request->send(200,"text/plain", "Sent data" + message);
-   
-  }, onUpload);
-
-  server.on("/post", HTTP_POST, [](AsyncWebServerRequest *request){
-        String message;
-        if (request->hasParam(PARAM_MESSAGE, true)) {
-            message = request->getParam(PARAM_MESSAGE, true)->value();
-        } else {
-            message = "No message sent";
-        }
-        if (request->hasParam("data", true)) {
-            message = request->getParam("data", true)->value();
-        } else {
-            message = "No message sent";
-        }
-        request->send(200, "text/plain", "Hello, POST: " + message);
-    });
 
     server.on(
     "/posttest",
@@ -205,8 +222,26 @@ void setup(){
         return;
       }
       
-      const char* color = doc["color"];
-      Serial.printf("color = %s",color);
+      int red = doc["red"];
+      int blue = doc["blue"];
+      int green = doc["green"];
+      int choice = doc["animation"];
+      const char* word = doc["message"];
+      Serial.printf("color = %d,%d,%d, animation = %d, message = %s",red,green,blue,choice,word);
+      if(choice == 0){
+        //turn all leds off 
+        digitalWrite(L_1, HIGH);
+        digitalWrite(L_0, HIGH);
+        Serial.println("Should turn off leds");
+        setalloff();
+      }
+      else if(choice == 1){
+        //turn all leds on
+        digitalWrite(L_1, HIGH);
+        digitalWrite(L_0, HIGH);
+        Serial.println("Should turn on leds");
+        setallon();
+      }
       request->send(200);
   });
   
@@ -223,29 +258,104 @@ void setup(){
   server.begin();
 }
 
-void setledon()
-{
-  for(int pwmreg = 1; pwmreg <= 0x12; pwmreg++){
-    WriteByte(pwmreg,0x1f);  
+void selectLayer(int layernum){
+  switch(layernum){
+    case 0:
+        digitalWrite(L_0, HIGH);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 1:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, HIGH);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 2:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, HIGH);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 3:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, HIGH);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 4:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, HIGH);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, LOW);
+        break;
+    case 5:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, HIGH);
+        digitalWrite(L_6, LOW);
+        break;
+    case 6:
+        digitalWrite(L_0, LOW);
+        digitalWrite(L_1, LOW);
+        digitalWrite(L_2, LOW);
+        digitalWrite(L_3, LOW);
+        digitalWrite(L_4, LOW);
+        digitalWrite(L_5, LOW);
+        digitalWrite(L_6, HIGH);
+        break;
   }
-  delay(5);
-  WriteByte(0x16,00);
-  delay(1000);
-  for(int pwmreg = 1; pwmreg <= 0x12; pwmreg++){
-    WriteByte(pwmreg,0x0); // pwm off
+}
+
+void setLayerOn(int chipNum) {
+  if (chipNum == 0) {
+    for(int pwmreg = 1; pwmreg <= 0x13; pwmreg++){
+        if(checker == 0){
+          checker = 1;
+          WriteLedDriverByte(pwmreg,255);
+        }
+        else{
+          checker = 0;
+          WriteLedDriverByte(pwmreg,0);
+        }
+        WriteLedDriverByte(0x16, 00);
+        delay(FX_SPEED);
+    }
+  } 
+  else {
+    for(int pwmreg = 1; pwmreg <= 0x8; pwmreg++){
+        if(checker == 0){
+          checker = 1;
+          WriteLedDriverByte(pwmreg,255);
+        }
+        else{
+          checker = 0;
+          WriteLedDriverByte(pwmreg,0);
+        }
+        WriteLedDriverByte(0x16, 00);
+        delay(FX_SPEED);
+    }
   }
-  delay(5);
-  WriteByte(0x16,00);
-  delay(1000);
 }
 
 void loop(){
-  for (int i = 0; i < 2; i++) {
-      Serial.printf("Selecting mux %d\n",i);
-      tcaselect(i);
-      Serial.printf("Setting leds on for board %d\n",i);
-      setledon();
-      delay(50);
-    }
-    delay(500);
 }
