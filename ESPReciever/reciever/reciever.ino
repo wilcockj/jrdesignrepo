@@ -407,7 +407,7 @@ void loop()
     int time = millis();
     int maxvalue = 0;
     Serial.printf("millis = %d\n", time);
-    Serial.println("Doing audio mode");
+    Serial.println("Inside audio mode");
     while (time - millis() < 5000)
     {
       sensorValue = analogRead(sensorPin);
