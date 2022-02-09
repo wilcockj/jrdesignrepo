@@ -2,10 +2,10 @@
 /*
   Rui Santos
   Complete project details at https://RandomNerdTutorials.com/esp32-client-server-wi-fi/
-  
+
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files.
-  
+
   The above copyright notice and this permission notice shall be included in all
   copies or substantial portions of the Software.
 */
@@ -37,8 +37,8 @@ static int animation = -1;
 static int audiomode = 0;
 static char usermessage[2000];
 
-int sensorPin = 35;   // select the input pin for the potentiometer
-int sensorValue = 0;  // variable to store the value coming from the sensor
+int sensorPin = 35;  // select the input pin for the potentiometer
+int sensorValue = 0; // variable to store the value coming from the sensor
 DynamicJsonDocument doc(2048);
 const char *PARAM_MESSAGE = "message";
 /*#include <SPI.h>
@@ -52,13 +52,13 @@ AsyncWebServer server(80);
 
 void onRequest(AsyncWebServerRequest *request)
 {
-  //Handle Unknown Request
+  // Handle Unknown Request
   request->send(404);
 }
 
 void onBody(AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
 {
-  //Handle body
+  // Handle body
 }
 
 void onUpload(AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final)
@@ -68,7 +68,7 @@ void onUpload(AsyncWebServerRequest *request, String filename, size_t index, uin
 
 void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len)
 {
-  //Handle WebSocket event
+  // Handle WebSocket event
 }
 
 void WriteLedDriverByte(uint8_t Reg_Add, uint8_t Reg_Dat)
@@ -149,9 +149,9 @@ void setup()
   Serial.println();
   Serial.println("Setting up");
   Wire.begin();
-  Wire.setClock(100000); //I2C 400kHz
+  Wire.setClock(100000); // I2C 400kHz
 
-  pinMode(L_0, OUTPUT); //set both layers off
+  pinMode(L_0, OUTPUT); // set both layers off
   pinMode(L_1, OUTPUT);
   digitalWrite(L_0, LOW);
   digitalWrite(L_0, LOW);
@@ -170,23 +170,23 @@ void setup()
     currentPortNumber = myMux.getPort();
     Serial.print("CurrentPort: ");
     Serial.println(currentPortNumber);
-    WriteLedDriverByte(0x17, 0x00); //reset
-    WriteLedDriverByte(0x00, 0x01); //enable
-    WriteLedDriverByte(0x13, 0x3f); //enable leds
-    WriteLedDriverByte(0x14, 0x3f); //enable leds 2
-    WriteLedDriverByte(0x15, 0x3f); //enable led 3
+    WriteLedDriverByte(0x17, 0x00); // reset
+    WriteLedDriverByte(0x00, 0x01); // enable
+    WriteLedDriverByte(0x13, 0x3f); // enable leds
+    WriteLedDriverByte(0x14, 0x3f); // enable leds 2
+    WriteLedDriverByte(0x15, 0x3f); // enable led 3
   }
   // pinMode(4,OUTPUT);//SDB
   // digitalWrite(4,HIGH);//SDB_HIGH
-  //delay(100); //keep 0.5s
+  // delay(100); //keep 0.5s
   // Serial port for debugging purposes
 
   // Setting the ESP as an access point
   Serial.print("Setting AP (Access Point)…");
   // Remove the password parameter, if you want the AP (Access Point) to be open
   WiFi.softAP(ssid, password);
-  //WiFi.mode(WIFI_STA);
-  //WiFi.begin(ssid, password);
+  // WiFi.mode(WIFI_STA);
+  // WiFi.begin(ssid, password);
   /*
   if (WiFi.waitForConnectResult() != WL_CONNECTED) {
     Serial.printf("WiFi Failed!\n");
@@ -207,7 +207,7 @@ void setup()
       [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
       {
         static char message[200];
-        int count;
+        int count = 0;
         for (size_t i = 0; i < len; i++)
         {
           Serial.write(data[i]);
@@ -240,22 +240,22 @@ void setup()
         audiomode = doc["audio"];
         strcpy(usermessage, word);
         Serial.printf("color = %d,%d,%d, animation = %d, message = %s\n", red, green, blue, choice, word);
-        if (choice == 0)
+        /*if (animation == 0)
         {
-          //turn all leds off
+          // turn all leds off
           digitalWrite(L_1, HIGH);
           digitalWrite(L_0, HIGH);
           Serial.println("Should turn off leds");
           setalloff();
         }
-        else if (choice == 1)
+        else if (animation == 1)
         {
-          //turn all leds on
+          // turn all leds on
           digitalWrite(L_1, HIGH);
           digitalWrite(L_0, HIGH);
           Serial.println("Should turn on leds");
           setallon();
-        }
+        }*/
         request->send(200);
       });
 
@@ -384,7 +384,7 @@ void setLayerOn(int chipNum)
 
 void printdata()
 {
-  Serial.printf("color = %d,%d,%d, animation = %d, message = %s,audiomode = %d sensor reading = %d", rgb[0], rgb[1], rgb[1], animation, usermessage,audiomode,sensorValue);
+  Serial.printf("color = %d,%d,%d, animation = %d, message = %s,audiomode = %d sensor reading = %d\n", rgb[0], rgb[1], rgb[1], animation, usermessage, audiomode, sensorValue);
 }
 
 void loop()
@@ -392,18 +392,32 @@ void loop()
   delay(500);
   printdata();
   sensorValue = analogRead(sensorPin);
-  while(animation == 1){
+  while (animation == 1)
+  {
     delay(500);
     Serial.println("Doing anim 1");
   }
-  while(animation == 2){
+  while (animation == 2)
+  {
     delay(500);
     Serial.println("Doing anim 2");
   }
-  while(audiomode){
-    delay(500);
+  while (audiomode)
+  {
+    int time = millis();
+    int maxvalue = 0;
+    Serial.printf("millis = %d\n", time);
     Serial.println("Doing audio mode");
-    //need to define tresholds
+    while (time - millis() < 5000)
+    {
+      sensorValue = analogRead(sensorPin);
+      Serial.println(sensorValue);
+      if (sensorValue > maxvalue)
+      {
+        maxvalue = sensorValue;
+      }
+    }
+    // need to define tresholds
     /* maybe look for peaks over a certain time period
      *  say .2sec
      * switch
@@ -417,5 +431,4 @@ void loop()
      *      turn all on
      */
   }
-  
 }
