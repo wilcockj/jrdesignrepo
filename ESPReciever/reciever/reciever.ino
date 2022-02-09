@@ -11,13 +11,8 @@
 */
 
 #include <Arduino.h>
-#ifdef ESP32
-#include <WiFi.h>
+#include <C:\Users\james\AppData\Local\Arduino15\packages\esp32\hardware\esp32\1.0.6\libraries\WiFi\src\WiFi.h>
 #include <AsyncTCP.h>
-#elif defined(ESP8266)
-#include <ESP8266WiFi.h>
-#include <ESPAsyncTCP.h>
-#endif
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
 #include <Wire.h>
@@ -39,7 +34,11 @@ const char *ssid = "Lattice";
 const char *password = "123456789";
 static int rgb[] = {255, 255, 255};
 static int animation = -1;
-static char *usermessage[2000];
+static int audiomode = 0;
+static char usermessage[2000];
+
+int sensorPin = 35;   // select the input pin for the potentiometer
+int sensorValue = 0;  // variable to store the value coming from the sensor
 DynamicJsonDocument doc(2048);
 const char *PARAM_MESSAGE = "message";
 /*#include <SPI.h>
@@ -160,8 +159,6 @@ void setup()
   if (myMux.begin() == false)
   {
     Serial.println("Mux not detected. Freezing...");
-    while (1)
-      ;
   }
   Serial.println("Mux detected");
 
@@ -234,10 +231,13 @@ void setup()
         int blue = doc["blue"];
         int green = doc["green"];
 
-        int choice = doc["choice"];
-        rgb = [ red, blue, green ];
+        int choice = doc["animation"];
+        rgb[0] = red;
+        rgb[1] = blue;
+        rgb[2] = green;
         animation = choice;
         const char *word = doc["message"];
+        audiomode = doc["audio"];
         strcpy(usermessage, word);
         Serial.printf("color = %d,%d,%d, animation = %d, message = %s\n", red, green, blue, choice, word);
         if (choice == 0)
@@ -384,11 +384,38 @@ void setLayerOn(int chipNum)
 
 void printdata()
 {
-  Serial.printf("color = %d,%d,%d, animation = %d, message = %s\n", rgb[0], rgb[1], rgb[1], animation, usermessage);
+  Serial.printf("color = %d,%d,%d, animation = %d, message = %s,audiomode = %d sensor reading = %d", rgb[0], rgb[1], rgb[1], animation, usermessage,audiomode,sensorValue);
 }
 
 void loop()
 {
   delay(500);
   printdata();
+  sensorValue = analogRead(sensorPin);
+  while(animation == 1){
+    delay(500);
+    Serial.println("Doing anim 1");
+  }
+  while(animation == 2){
+    delay(500);
+    Serial.println("Doing anim 2");
+  }
+  while(audiomode){
+    delay(500);
+    Serial.println("Doing audio mode");
+    //need to define tresholds
+    /* maybe look for peaks over a certain time period
+     *  say .2sec
+     * switch
+     *  value < 400:
+     *    turn all off
+     *  600 > value > 400:
+     *      turn on middle, [2][2]
+     *  800 > value > 600:
+     *      turn on [1-3][1-3]
+     *  value > 800
+     *      turn all on
+     */
+  }
+  
 }
