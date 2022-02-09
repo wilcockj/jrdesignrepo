@@ -34,20 +34,12 @@ QWIICMUX myMux;
 #define L_6 23
 #define FX_SPEED 50
 static int checker = 0;
-byte PWM_Gamma64[64] =
-    {
-        0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-        0x08, 0x09, 0x0b, 0x0d, 0x0f, 0x11, 0x13, 0x16,
-        0x1a, 0x1c, 0x1d, 0x1f, 0x22, 0x25, 0x28, 0x2e,
-        0x34, 0x38, 0x3c, 0x40, 0x44, 0x48, 0x4b, 0x4f,
-        0x55, 0x5a, 0x5f, 0x64, 0x69, 0x6d, 0x72, 0x77,
-        0x7d, 0x80, 0x88, 0x8d, 0x94, 0x9a, 0xa0, 0xa7,
-        0xac, 0xb0, 0xb9, 0xbf, 0xc6, 0xcb, 0xcf, 0xd6,
-        0xe1, 0xe9, 0xed, 0xf1, 0xf6, 0xfa, 0xfe, 0xff};
-
 // Set your access point network credentials
 const char *ssid = "Lattice";
 const char *password = "123456789";
+static int rgb[] = {255, 255, 255};
+static int animation = -1;
+static char *usermessage[2000];
 DynamicJsonDocument doc(2048);
 const char *PARAM_MESSAGE = "message";
 /*#include <SPI.h>
@@ -117,7 +109,7 @@ void setallon()
     {
 
       WriteLedDriverByte(pwmreg, 255);
-      
+
       WriteLedDriverByte(0x16, 00);
     }
     for (int pwmreg = 1; pwmreg <= 0x8; pwmreg++)
@@ -140,17 +132,15 @@ void setalloff()
 
       WriteLedDriverByte(pwmreg, 0);
       WriteLedDriverByte(0x16, 00);
-     
     }
-    
+
     for (int pwmreg = 1; pwmreg <= 0x8; pwmreg++)
     {
 
       WriteLedDriverByte(pwmreg, 0);
 
-     WriteLedDriverByte(0x16, 00);
+      WriteLedDriverByte(0x16, 00);
     }
-     
   }
 }
 
@@ -243,8 +233,12 @@ void setup()
         int red = doc["red"];
         int blue = doc["blue"];
         int green = doc["green"];
+
         int choice = doc["choice"];
+        rgb = [ red, blue, green ];
+        animation = choice;
         const char *word = doc["message"];
+        strcpy(usermessage, word);
         Serial.printf("color = %d,%d,%d, animation = %d, message = %s\n", red, green, blue, choice, word);
         if (choice == 0)
         {
@@ -388,6 +382,13 @@ void setLayerOn(int chipNum)
   }
 }
 
+void printdata()
+{
+  Serial.printf("color = %d,%d,%d, animation = %d, message = %s\n", rgb[0], rgb[1], rgb[1], animation, usermessage);
+}
+
 void loop()
 {
+  delay(500);
+  printdata();
 }
