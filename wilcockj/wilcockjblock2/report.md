@@ -24,7 +24,10 @@ be lit up.
 |Current| 24uA | 60uA |
 |Supplied Voltage | | 3.3v|
 |Output Voltage | |3.3v/2 = 1.65V |
+|Frequency Operation|20Hz|20kHz|
 
+# Microphone and Amplifier measurements
+![](micmeas.png){width=40%}
 
 # Top Level Block Diagram
 ![](newblock.png){width=75%}
@@ -33,7 +36,7 @@ be lit up.
 ![](interfacedef.png){width=75%}
 
 # Schematic 
-![](micsch.png){width=75%}
+![](micsch.png){width=40%}
 
 # Audio sampling code 
 ```C
