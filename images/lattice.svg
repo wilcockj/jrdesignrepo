@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   inkscape:export-ydpi="327.47806"
+   inkscape:export-xdpi="327.47806"
+   inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/latticenewhighres.png"
+   sodipodi:docname="lattice.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   id="svg10322"
+   version="1.1"
+   viewBox="0 0 297 210"
+   height="210mm"
+   width="297mm"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview10324"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="mm"
+     inkscape:zoom="1.3658579"
+     inkscape:cx="254.05277"
+     inkscape:cy="285.16875"
+     inkscape:window-width="1920"
+     inkscape:window-height="1010"
+     inkscape:window-x="0"
+     inkscape:window-y="41"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <defs
+     id="defs10319">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient35246">
+      <stop
+         style="stop-color:#b70058;stop-opacity:1"
+         offset="0"
+         id="stop35288" />
+      <stop
+         style="stop-color:#131bdb;stop-opacity:0.5368642"
+         offset="1"
+         id="stop35290" />
+    </linearGradient>
+    <rect
+       x="142.37403"
+       y="494.47104"
+       width="507.06734"
+       height="113.14636"
+       id="rect26233" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect12155"
+       is_visible="true"
+       lpeversion="1"
+       pattern="M 4.3444612,30.959666 V 30.432174 13.99298"
+       copytype="repeated"
+       prop_scale="1"
+       scale_y_rel="false"
+       spacing="8.7"
+       normal_offset="-10.4"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       hide_knot="false"
+       fuse_tolerance="0" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect11264"
+       is_visible="true"
+       lpeversion="1"
+       pattern="M 4.3444612,30.959666 V 30.432174 13.99298"
+       copytype="repeated"
+       prop_scale="1"
+       scale_y_rel="true"
+       spacing="7.6"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="true"
+       hide_knot="false"
+       fuse_tolerance="0" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient35246"
+       id="linearGradient35248"
+       x1="49.516792"
+       y1="75.194862"
+       x2="126.24021"
+       y2="75.194862"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.90806602,0,0,1.0028379,4.5887692,-0.21339776)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use1124"
+       xlink:href="#use1124"
+       id="use1852"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use8971"
+       xlink:href="#use8971"
+       id="use9667"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use1124"
+       xlink:href="#use1124"
+       transform="translate(9.8132415,-5.8879449)"
+       id="use1854"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use1124"
+       xlink:href="#use1124"
+       transform="translate(19.626483,-11.77589)"
+       id="use1856"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use1124"
+       xlink:href="#use1124"
+       transform="translate(29.439725,-17.663835)"
+       id="use1858"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use1124"
+       xlink:href="#use1124"
+       transform="translate(39.252966,-23.55178)"
+       id="use1860"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <path
+       style="fill:#ffffff;stroke:#1eb37c;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
+       d="m 47.713155,91.519525 39.25297,-23.55178"
+       id="use2495"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="66.967747"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <path
+       style="fill:#ffffff;stroke:#1eb37c;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
+       d="m 47.713155,83.342955 39.25297,-23.55178"
+       id="use2497"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="66.967747"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <path
+       style="fill:#ffffff;stroke:#1eb37c;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
+       d="m 47.713155,75.166385 39.25297,-23.55178"
+       id="use2499"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="66.967747"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <path
+       style="fill:#ffffff;stroke:#1eb37c;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
+       d="m 47.713155,66.989816 39.25297,-23.55178"
+       id="use2501"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="66.967747"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <path
+       style="fill:#ffffff;stroke:#1eb37c;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
+       d="m 47.713155,58.813246 39.25297,-23.55178"
+       id="use2503"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="66.967747"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <path
+       style="fill:#ffffff;stroke:#1eb37c;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
+       d="m 47.713155,50.636676 39.25297,-23.55178"
+       id="use2505"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="66.967747"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <path
+       style="fill:#ffffff;stroke:#1eb37c;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
+       d="m 47.713155,42.460106 39.25297,-23.55178"
+       id="use2507"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="66.967747"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <path
+       style="fill:none;stroke:#983030;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 47.713156,91.519525 84.966121,128.77249"
+       id="path15810"
+       inkscape:tile-cx="66.33964"
+       inkscape:tile-cy="110.14601"
+       inkscape:tile-w="39.252966"
+       inkscape:tile-h="39.252966"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="90.519528"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#path15810"
+       xlink:href="#path15810"
+       id="use1124"
+       inkscape:tile-cx="66.33964"
+       inkscape:tile-cy="110.14601"
+       inkscape:tile-w="39.252966"
+       inkscape:tile-h="39.252966"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="90.519528"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <path
+       style="fill:#ffffff;stroke:#375ddb;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
+       d="m 47.713156,42.460105 v 49.05942"
+       id="path2640"
+       inkscape:tile-cx="47.713157"
+       inkscape:tile-cy="66.989817"
+       inkscape:tile-w="2.0000001"
+       inkscape:tile-h="51.059421"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="41.460106"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#path2640"
+       xlink:href="#path2640"
+       id="use8971"
+       inkscape:tile-cx="47.713157"
+       inkscape:tile-cy="66.989817"
+       inkscape:tile-w="2.0000001"
+       inkscape:tile-h="51.059421"
+       inkscape:tile-x0="46.713157"
+       inkscape:tile-y0="41.460106"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use8971"
+       xlink:href="#use8971"
+       transform="translate(9.3100003,9.2928147)"
+       id="use9669"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use8971"
+       xlink:href="#use8971"
+       transform="translate(18.620001,18.585629)"
+       id="use9671"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use8971"
+       xlink:href="#use8971"
+       transform="translate(27.930001,27.878444)"
+       id="use9673"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+    <use
+       x="0"
+       y="0"
+       inkscape:tiled-clone-of="#use8971"
+       xlink:href="#use8971"
+       transform="translate(37.240001,37.171259)"
+       id="use9675"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="text"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,16.479097,-62.363667)"
+       id="text26231"
+       style="font-style:normal;font-weight:normal;font-size:45.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:5.23px;white-space:pre;shape-inside:url(#rect26233);fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
+       inkscape:export-xdpi="41.413433"
+       inkscape:export-ydpi="41.413433"><tspan
+         x="142.375"
+         y="536.97067"
+         id="tspan35909"><tspan
+           style="font-family:'Routed Gothic';-inkscape-font-specification:'Routed Gothic';fill:#ffffff"
+           id="tspan35907">LATTICE</tspan></tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="label"
+     style="display:none">
+    <path
+       id="rect24479"
+       style="display:inline;opacity:0.653126;mix-blend-mode:darken;fill:url(#linearGradient35248);fill-opacity:1;fill-rule:nonzero;stroke:#180043;stroke-width:1.50693;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 50.270265,62.437474 h 53.762295 c 0,0 14.43906,-0.493995 14.47362,12.757384 0.0346,13.251379 -14.30381,12.757383 -14.30381,12.757383 H 50.270265 Z"
+       sodipodi:nodetypes="cczccc" />
+  </g>
+</svg>
