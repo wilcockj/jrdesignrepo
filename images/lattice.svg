@@ -9,9 +9,9 @@
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    id="svg10322"
    version="1.1"
-   viewBox="0 0 297 210"
-   height="210mm"
-   width="297mm"
+   viewBox="0 0 78.505933 111.86417"
+   height="111.86417mm"
+   width="78.505936mm"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -28,9 +28,9 @@
      inkscape:document-units="mm"
      showgrid="false"
      units="mm"
-     inkscape:zoom="1.3658579"
-     inkscape:cx="254.05277"
-     inkscape:cy="285.16875"
+     inkscape:zoom="0.68292897"
+     inkscape:cx="276.74913"
+     inkscape:cy="369.73098"
      inkscape:window-width="1920"
      inkscape:window-height="1010"
      inkscape:window-x="0"
@@ -38,7 +38,11 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
      showguides="true"
-     inkscape:guide-bbox="true" />
+     inkscape:guide-bbox="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <defs
      id="defs10319">
     <linearGradient
@@ -54,9 +58,9 @@
          id="stop35290" />
     </linearGradient>
     <rect
-       x="142.37403"
+       x="142.37402"
        y="494.47104"
-       width="507.06734"
+       width="507.06735"
        height="113.14636"
        id="rect26233" />
     <inkscape:path-effect
@@ -105,7 +109,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-46.713155,-17.908326)">
     <use
        x="0"
        y="0"
@@ -114,7 +119,9 @@
        id="use1852"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <use
        x="0"
        y="0"
@@ -123,7 +130,9 @@
        id="use9667"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <use
        x="0"
        y="0"
@@ -133,7 +142,9 @@
        id="use1854"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <use
        x="0"
        y="0"
@@ -143,7 +154,9 @@
        id="use1856"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <use
        x="0"
        y="0"
@@ -153,7 +166,9 @@
        id="use1858"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <use
        x="0"
        y="0"
@@ -163,7 +178,9 @@
        id="use1860"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <path
        style="fill:#ffffff;stroke:#1eb37c;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
        d="m 47.713155,91.519525 39.25297,-23.55178"
@@ -254,7 +271,9 @@
        inkscape:tile-y0="90.519528"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <path
        style="fill:#ffffff;stroke:#375ddb;stroke-width:2;stroke-linecap:round;stroke-opacity:1"
        d="m 47.713156,42.460105 v 49.05942"
@@ -282,7 +301,9 @@
        inkscape:tile-y0="41.460106"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <use
        x="0"
        y="0"
@@ -292,7 +313,9 @@
        id="use9669"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <use
        x="0"
        y="0"
@@ -302,7 +325,9 @@
        id="use9671"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <use
        x="0"
        y="0"
@@ -312,7 +337,9 @@
        id="use9673"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
     <use
        x="0"
        y="0"
@@ -322,13 +349,16 @@
        id="use9675"
        inkscape:export-filename="/home/jamesw/Documents/InkscapeCreations/smallerres"
        inkscape:export-xdpi="41.413433"
-       inkscape:export-ydpi="41.413433" />
+       inkscape:export-ydpi="41.413433"
+       width="100%"
+       height="100%" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="text"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-46.713155,-17.908326)">
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,16.479097,-62.363667)"
@@ -339,15 +369,16 @@
        inkscape:export-ydpi="41.413433"><tspan
          x="142.375"
          y="536.97067"
-         id="tspan35909"><tspan
+         id="tspan36050"><tspan
            style="font-family:'Routed Gothic';-inkscape-font-specification:'Routed Gothic';fill:#ffffff"
-           id="tspan35907">LATTICE</tspan></tspan></text>
+           id="tspan36048">LATTICE</tspan></tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="label"
-     style="display:none">
+     style="display:none"
+     transform="translate(-46.713155,-17.908326)">
     <path
        id="rect24479"
        style="display:inline;opacity:0.653126;mix-blend-mode:darken;fill:url(#linearGradient35248);fill-opacity:1;fill-rule:nonzero;stroke:#180043;stroke-width:1.50693;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
