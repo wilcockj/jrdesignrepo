@@ -1,4 +1,4 @@
-![lattice logo](./images/latticenewhighres.png)
+![lattice logo](./images/latticesmaller.png)
 # jrdesignrepo
 
 Simulation of led cube
