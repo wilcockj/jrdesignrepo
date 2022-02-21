@@ -1,4 +1,5 @@
 <img src="./images/latticenewhighres.png" width = 200>
+
 # jrdesignrepo
 
 Simulation of led cube
