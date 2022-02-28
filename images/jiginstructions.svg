@@ -38,9 +38,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="2.56"
-     inkscape:cx="282.61719"
-     inkscape:cy="114.64844"
+     inkscape:zoom="1.8101934"
+     inkscape:cx="198.04514"
+     inkscape:cy="72.091746"
      inkscape:window-width="1920"
      inkscape:window-height="1010"
      inkscape:window-x="0"
@@ -384,12 +384,11 @@
          x="86.178299"
          y="217.95547"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Routed Gothic';-inkscape-font-specification:'Routed Gothic'">R</tspan></text>
-    <circle
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.95964;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1.8;stroke-dasharray:none"
+    <path
        id="path53609"
-       cx="350.01498"
-       cy="139.75696"
-       r="40.322941" />
+       style="fill:none;stroke:#000000;stroke-width:2.95964;stroke-linecap:round;stroke-miterlimit:1.8"
+       d="M 329.65625 89.119141 C 307.3865 89.11914 289.33203 107.17166 289.33203 129.44141 C 289.33203 151.71115 307.38651 169.76562 329.65625 169.76562 C 341.20043 169.76562 351.61029 164.91367 358.96094 157.13867 C 361.80434 154.13112 364.18209 150.68114 365.99805 146.91016 L 365.99805 111.97461 C 364.22055 108.28316 361.90689 104.89969 359.14258 101.9375 C 351.78238 94.05045 341.29516 89.119141 329.65625 89.119141 z "
+       transform="translate(20.359402,10.315127)" />
     <path
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.95964;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1.8;stroke-dasharray:none"
        d="m 361.52086,139.75696 v 67.52147"
