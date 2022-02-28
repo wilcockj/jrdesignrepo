@@ -37,8 +37,8 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="1.4142136"
-     inkscape:cx="277.89296"
-     inkscape:cy="302.99525"
+     inkscape:cx="152.02796"
+     inkscape:cy="390.6765"
      inkscape:window-width="1920"
      inkscape:window-height="1010"
      inkscape:window-x="0"
@@ -17307,18 +17307,10 @@ WatxFFENry0rizpXfRSASMrh/wN0YYYFCKLRbQAAAABJRU5ErkJggg==
        d="m 852.1472,162.27762 c -21.24489,-0.001 -38.46788,12.7597 -38.46718,28.50107 0.0126,0.17387 -8.9e-4,0.35042 0.0167,0.52406 l -0.005,77.72431 h 76.83873 l 0.0749,-77.72708 c 0.0175,-0.17365 -0.006,-0.34742 0.006,-0.52129 6.9e-4,-15.74047 -17.22044,-28.50096 -38.4641,-28.50107 z"
        sodipodi:nodetypes="cccccccc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1.8;stroke-dasharray:none"
        id="path11458-5"
-       sodipodi:type="arc"
-       sodipodi:cx="107.96395"
-       sodipodi:cy="283.97174"
-       sodipodi:rx="37.904579"
-       sodipodi:ry="14.913078"
-       sodipodi:start="0"
-       sodipodi:end="3.1415927"
-       sodipodi:arc-type="arc"
-       d="m 145.86853,283.97174 a 37.904579,14.913078 0 0 1 -18.95229,12.91511 37.904579,14.913078 0 0 1 -37.904579,0 37.904579,14.913078 0 0 1 -18.952289,-12.91511"
-       sodipodi:open="true" />
+       style="fill:#1c7f7f;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:1.8;fill-opacity:1"
+       d="m 145.86853,274.22701 c 0,0.33671 -0.0289,10.41654 -0.0859,10.74955 -0.84526,4.93636 -7.87985,9.41468 -18.86641,11.91029 -11.72772,2.66397 -26.17686,2.66396 -37.904579,0 -11.11841,-2.52556 -18.189436,-7.08171 -18.894168,-12.08821 -0.03862,-0.27437 -0.05812,-11.10688 -0.05812,-11.38369"
+       sodipodi:nodetypes="cssssc" />
     <ellipse
        style="fill:#000000;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1.8;stroke-dasharray:none"
        id="path11458"
@@ -17326,14 +17318,6 @@ WatxFFENry0rizpXfRSASMrh/wN0YYYFCKLRbQAAAABJRU5ErkJggg==
        cy="273.35989"
        rx="37.904579"
        ry="14.913078" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1.8;stroke-dasharray:none"
-       d="m 70.054652,283.98851 v -10.7391"
-       id="path12694" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1.8;stroke-dasharray:none"
-       d="M 145.85557,283.9617 V 273.2226"
-       id="path12694-1" />
     <path
        id="path14207"
        style="fill:#3f3ff4;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:1.8"
@@ -17516,14 +17500,14 @@ WatxFFENry0rizpXfRSASMrh/wN0YYYFCKLRbQAAAABJRU5ErkJggg==
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Routed Gothic';-inkscape-font-specification:'Routed Gothic';fill:#ffffff">5mm</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;line-height:1.25;font-family:sans-serif;fill:#000000"
-       x="359.71725"
-       y="224.80626"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif"
+       x="360.80569"
+       y="210.91354"
        id="text81896"><tspan
          sodipodi:role="line"
          id="tspan81894"
-         x="359.71725"
-         y="224.80626"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:'Routed Gothic';-inkscape-font-specification:'Routed Gothic';fill:#000000">From Top</tspan></text>
+         x="360.80569"
+         y="210.91354"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Routed Gothic';-inkscape-font-specification:'Routed Gothic'">From To</tspan></text>
   </g>
 </svg>
