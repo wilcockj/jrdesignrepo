@@ -9,6 +9,9 @@
    id="svg5"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    sodipodi:docname="jiginstructions.svg"
+   inkscape:export-filename="/home/jamesw/Documents/Homework/jrdesignrepo/images/jiginstructions.png"
+   inkscape:export-xdpi="472.31979"
+   inkscape:export-ydpi="472.31979"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +39,7 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="2.56"
-     inkscape:cx="291.21094"
+     inkscape:cx="282.61719"
      inkscape:cy="114.64844"
      inkscape:window-width="1920"
      inkscape:window-height="1010"
@@ -479,5 +482,16 @@
          x="312.10574"
          y="29.556818"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:'Routed Gothic';-inkscape-font-specification:'Routed Gothic';stroke:#ffffff;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">From Top</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:26.6667px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="439.25308"
+       y="169.67262"
+       id="text2530"><tspan
+         sodipodi:role="line"
+         id="tspan2528"
+         x="439.25308"
+         y="169.67262"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:'Routed Gothic';-inkscape-font-specification:'Routed Gothic';stroke:#ffffff;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">R</tspan></text>
   </g>
 </svg>
