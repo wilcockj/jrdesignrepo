@@ -132,28 +132,27 @@ while True:
            data['audio'] = 0
            window.find_element('audio_color').Update(
                    button_color=('#ffffff', '#375ddb'))
-       try: # try psoting json to ESP32 server
-           requests.post(URL, json = data, timeout = 2)
-       except: # if not connect, error popup occurs
-           sg.Popup("Not connected to Lattice", title = "Error")  
-
+   
     if event == 'Send': # if send button is clicked
-        data['message'] = values[0] # update message json
-        # if audio on, popup error occurs
-        if data['audio'] == 1: 
-            sg.Popup("Turn off Audio Mode", title = "Error")
-
+        data['message'] = values[0]
+        if data['message'] != '':
+          data['message'] = " " + values[0] # update message json
+                           
         # if animation and message selected, popup error occurs
-        elif data['animation'] != 0 and data['message'] != '':
+        if data['animation'] != 0 and data['message'] != '':
             sg.Popup("Cannot send animation and message", 
                     title = "Error")
 
-        # if no animation or message selected, popup error occrs
-        elif data['animation'] == 0 and data['message'] == '':
-            sg.Popup("Choose animation or message", title = "Error")
-       
+        # if no animation or message selected, popup error occurs
+        elif data['animation'] == 0 and data['message'] == '' and data['audio'] == 0:
+            sg.Popup("Choose animation, message or audio mode", title = "Error")
+      
+        # if animation or message selected with audio mode, popup error occurs
+        elif (data['animation'] != 0 or data['message'] != '') and data['audio'] == 1:
+            sg.Popup("Deselect animation or message for audio mode", title = "Error")
+ 
        # try to post json if no errors
-        else:    
+        else: 
             try:
                 requests.post(URL, json = data, timeout = 2)
             except: # error if not connected
