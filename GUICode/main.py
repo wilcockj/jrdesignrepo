@@ -18,7 +18,7 @@ font = ('Arial', 15) # font type and size
 layout = [[sg.Button('Random', button_color=('#983030'), 
             size = (10,2), font = ('Arial', 15), 
             key = 'animation1'), 
-           sg.Button('Moving Plane', button_color=('#983030'), 
+           sg.Button('Rise', button_color=('#983030'), 
             size = (10,2), font = ('Arial', 15), 
             key = 'animation2'), 
            sg.Button('Rain', button_color=('#983030'), 
@@ -39,7 +39,6 @@ layout = [[sg.Button('Random', button_color=('#983030'),
            sg.Button('Send', font = font, size = (10,2), 
             button_color=('#1eb37c'))],
           [sg.Text('')]
-         #[sg.Button("Toggle")] 
          ] 
 
 # Create the Window
@@ -114,14 +113,6 @@ while True:
         data['red'] = RGB[0]
         data['green'] = RGB[1]
         data['blue'] = RGB[2]
-
-    # the if statement below is for testing use
-    #if event == 'Toggle':
-       #if data['choice'] == 0:
-          # data['choice'] = 1
-       #else:
-           #data['choice'] = 0
-      # r = requests.post(URL, json = data)
 
     if event == 'audio_color': # if audio button is clicked
        if data['audio'] == 0: # if not selected            
